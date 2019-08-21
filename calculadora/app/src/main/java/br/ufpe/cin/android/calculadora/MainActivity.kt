@@ -2,12 +2,111 @@ package br.ufpe.cin.android.calculadora
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
+import android.widget.Toast
+import java.lang.reflect.Executable
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Number
+        btn_0.setOnClickListener{
+            text_calc.append("0")
+            text_info.append("0")
+        }
+        btn_1.setOnClickListener{
+            text_calc.append("1")
+            text_info.append("1")
+        }
+        btn_2.setOnClickListener{
+            text_calc.append("2")
+            text_info.append("2")
+        }
+        btn_3.setOnClickListener{
+            text_calc.append("3")
+            text_info.append("3")
+        }
+        btn_4.setOnClickListener{
+            text_calc.append("4")
+            text_info.append("4")
+        }
+        btn_5.setOnClickListener{
+            text_calc.append("5")
+            text_info.append("5")
+        }
+        btn_6.setOnClickListener{
+            text_calc.append("6")
+            text_info.append("6")
+        }
+        btn_7.setOnClickListener{
+            text_calc.append("7")
+            text_info.append("7")
+        }
+        btn_8.setOnClickListener{
+            text_calc.append("8")
+            text_info.append("8")
+        }
+        btn_9.setOnClickListener{
+            text_calc.append("9")
+            text_info.append("9")
+        }
+        //Operations
+        btn_Divide.setOnClickListener{
+            text_calc.append("/")
+            text_info.append("/")
+        }
+        btn_Multiply.setOnClickListener{
+            text_calc.append("x")
+            text_info.append("x")
+        }
+        btn_Subtract.setOnClickListener{
+            text_calc.append("-")
+            text_info.append("-")
+        }
+        btn_Add.setOnClickListener{
+            text_calc.append("+")
+            text_info.append("+")
+        }
+        btn_LParen.setOnClickListener{
+            text_calc.append("(")
+            text_info.append("(")
+        }
+        btn_RParen.setOnClickListener{
+            text_calc.append(")")
+            text_info.append(")")
+        }
+        btn_Dot.setOnClickListener{
+            text_calc.append(".")
+            text_info.append(".")
+        }
+        btn_Power.setOnClickListener{
+            text_calc.append("^")
+            text_info.append("^")
+        }
+        //Actions
+        btn_Clear.setOnClickListener{
+            text_calc.setText(null)
+            text_info.setText(null)
+        }
+        btn_Equal.setOnClickListener{
+            val epx = text_calc.text.toString()
+
+            try {
+                val result = eval(epx).toString()
+                text_calc.setText(result)
+                text_calc.setText(null)
+                text_info.setText(null)
+            }catch (e:Exception) {
+                Toast.makeText(this, "Try a valid expression!", Toast.LENGTH_LONG).show()
+                text_calc.setText(null)
+                text_info.setText(null)
+            }
+
+        }
+
     }
 
 

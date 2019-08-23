@@ -2,6 +2,7 @@ package br.ufpe.cin.android.calculadora
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
 import android.widget.Toast
@@ -12,6 +13,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        text_info.text = savedInstanceState?.getString("text_info")
+
         //Number
         btn_0.setOnClickListener{
             text_calc.append("0")
@@ -87,7 +92,15 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("text_calc",text_calc.text.toString())
+        outState.putString("text_info", text_info.text.toString())
+        super.onSaveInstanceState(outState)
+    }
+
 
 
     //Como usar a função:

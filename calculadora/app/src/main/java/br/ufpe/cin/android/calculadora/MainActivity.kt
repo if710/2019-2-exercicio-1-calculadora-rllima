@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
 
         text_info.text = savedInstanceState?.getString("text_info")
-
+        text_calc.setText(savedInstanceState?.getString("text_calc"))
         //Number
         btn_0.setOnClickListener{
             text_calc.append("0")
